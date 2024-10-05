@@ -1,21 +1,31 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
+export default function Navbar(){
 const navigation = [
   { name: 'Home', href: '/', current: true },
-  { name: 'Explore Tehsils', href: '/tehsils', current: false },
   { name: 'Explore Beaches', href: '/beaches', current: false },
   { name: 'Explore Temples', href: '/temples', current: false },
+  { name: 'Review', href: '/review', current: false },
 ];
+
+const [links, setLinks] = useState([]);
+
+useEffect(() => {
+  setLinks(navigation);
+}, []);
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
 }
 
-export default function Navbar() {
-  return (
-    <Disclosure as="nav" className="bg-gray-800">
+//console.log(navigation)
+
+   return (
+    <Disclosure as="nav" className="bg-gray-800 sticky">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
@@ -35,18 +45,23 @@ export default function Navbar() {
             </div>
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
-                {navigation.map((item) => (
+
+                  
+
+                {links.map((item,i) => (
                   <Link
-                    key={item.name}
+                    key={i}
                     to={item.href}
-                    className={classNames(
-                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'rounded-md px-3 py-2 text-sm font-medium'
-                    )}
+                    className={
+                      item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium' 
+                    }
                   >
                     {item.name}
                   </Link>
+                  
                 ))}
+
+                
               </div>
             </div>
           </div>
@@ -104,10 +119,9 @@ export default function Navbar() {
             <Link
               key={item.name}
               to={item.href}
-              className={classNames(
-                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                'block rounded-md px-3 py-2 text-base font-medium'
-              )}
+              className={
+                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium'
+              }
             >
               {item.name}
             </Link>
@@ -117,3 +131,4 @@ export default function Navbar() {
     </Disclosure>
   );
 }
+

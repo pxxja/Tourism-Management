@@ -9,16 +9,18 @@ import ChiplunTehsil from '../../Images/ChiplunTehsil.jpg';
 import KhedTehsil from '../../Images/KhedTehsil.jpeg';
 import DapoliTehsil from '../../Images/DapoliTehsil.jpg';
 import MandangadTehsil from '../../Images/MandangadTehsil.jpeg';
+import { Link } from 'react-router-dom';
 
 
 export default function Tehsil() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 justify-items-center p-7 sm:p-[50px]">
+    <div id='explore' className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 justify-items-center p-7 sm:p-[50px]">
       
       <OneTehsil
-        tName="Ratnagiri"
+        tName="Ratnagiri" className="text-black"
         discription="Ratnagiri is such a beautiful place to visit."
         backgroundImage={RatnagiriTehsil}
+        
       />
       <OneTehsil
         tName="Rajapur"

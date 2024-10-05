@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function OneTehsil({ tName, discription, backgroundImage }) {
+export default function OneTehsil({ tName, discription, backgroundImage , viewBtn }) {
   return (
     <div
       className="relative z-10 flex items-center justify-center h-64 sm:h-80 md:h-96 lg:h-full bg-cover bg-center"
